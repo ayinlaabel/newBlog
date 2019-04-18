@@ -1,0 +1,27 @@
+<% include ./header %>
+    <div class="login">
+        <div class="login__form">
+            <form action="/user/login" class="form" method="POST">
+                <div class="u-margin-top">
+                    <%- messages('message', locals) %>
+                    <!-- <div class="form__group">
+                        <input type="email" name='email' class="form__input" id="email" placeholder="Email">
+                        <label for="email" class="form__label">Email</label>
+                    </div> -->
+                    <div class="form__group">
+                        <input type="text" name='username' class="form__input" id="email" placeholder="Username or Email">
+                        <label for="email" class="form__label">Username / Email</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="password" name="password" class="form__input" id="pwd" placeholder="Password">
+                        <label for="pwd" class="form__label">Password</label>
+                    </div>
+
+                    <button class="btn btn-success">Submit</button>
+                </div>
+                
+            </form>
+        </div>
+        
+    </div>
+<% include ./footer %>

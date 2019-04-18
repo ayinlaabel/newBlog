@@ -1,0 +1,11 @@
+<div class="massages">
+    <% Object.keys(messages).forEach((type) => { %>
+        <% messages[type].forEach((message) => { %>
+            <div class="alert alert-<%= type %> u-center">
+                <%= message %>
+            </div>
+        <% }) %>
+        
+    <% }) %>
+
+</div>

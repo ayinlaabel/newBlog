@@ -1,0 +1,38 @@
+<% include ./header %>
+    <div class="register">
+        <div class="register__form">
+            <form action="/user/register" class="form" method="POST">
+                <%- messages('message', locals) %>
+                <div class="form__group">
+                    <input type="text" name="name" class="form__input" id="name" placeholder="Full Name">
+                    <label for="name" class="form__label">Full Name</label>
+                </div>
+                <div class="form__group">
+                    <input type="text" name="username" class="form__input" id="email" placeholder="Username">
+                    <label for="email" class="form__label">Username</label>
+                </div>
+                <div class="form__group">
+                    <input type="email" name="email" class="form__input" id="email" placeholder="Email">
+                    <label for="email" class="form__label">Email</label>
+                </div>
+                <div class="form__group">
+                    <input type="password" name="password" class="form__input" id="pwd" placeholder="Password">
+                    <label for="pwd" class="form__label">Password</label>
+                </div>
+                <div class="form__radio--group">
+                    <input class="form__radio-input" type="radio" id="gndf" name="gender" value="Female">
+                    <label class="form__radio-label" for="gndf" class="form__label">
+                        <span class="form__radio-button"></span>Female</label>
+                </div>
+                <div class="form__radio--group">
+                    <input class="form__radio-input" type="radio" id="gndm" name="gender" value="Male">
+                    <label class="form__radio-label" for="gndm" class="form__label">
+                        <span class="form__radio-button"></span>Male</label>
+                </div>
+
+                <button class="btn btn-success">Submit</button>
+            </form>
+        </div>
+        
+    </div>
+<% include ./footer %>

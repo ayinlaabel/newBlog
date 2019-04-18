@@ -1,0 +1,12 @@
+<% include ./header %>
+<div class="article">
+    <div class="article__view">
+        <h3 class="header--secondary"><%= article.title %></h3>
+        <img src="" alt="article Image" srcset="">
+        <p class="article__paragraph"><%= article.article %></p>
+        <hr>
+        <a href="/article/edit/<%= article._id %>" class="btn btn-blue">Edit</a>
+        <a href="#" class="delete-article btn btn-red float-right" data-id="<%= article._id %>">Delete</a>
+    </div>
+</div>
+<% include ./footer %>
