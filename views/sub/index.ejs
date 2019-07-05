@@ -1,0 +1,107 @@
+<% include ./header %>
+    <main>
+        <%- messages('message', locals) %>
+        <div class="search">
+            <input type="text" class="search__input" placeholder="Search for article here ...">
+            <button class="btn btn-primary">Search</button>
+        </div>
+        <section class="trending">
+            <div class="trending__card">
+                <div class="card__image">
+                    <img src="/public/img/net-1.jpg" alt="ArticleImage">
+                </div>
+                <div class="card__content">
+                    <h5 class="card__content--heading">Article heading</h5>
+                    <p class="card__content--p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi adipisci explicabo officiis aliquid architecto repellat, dolorum, reprehenderit aliquam magnam quam perspiciatis facilis similique saepe! Cupiditate aspernatur earum asperiores natus voluptates!</p>
+                </div>
+            </div>
+            <div class="trending__card">
+                <div class="card__image">
+                    <img src="/public/img/net-1.jpg" alt="ArticleImage">
+                </div>
+                <div class="card__content">
+                    <h5 class="card__content--heading">Article heading</h5>
+                    <p class="card__content--p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi adipisci explicabo officiis aliquid architecto repellat, dolorum, reprehenderit aliquam magnam quam perspiciatis facilis similique saepe! Cupiditate aspernatur earum asperiores natus voluptates!</p>
+                </div>
+            </div>
+            <div class="trending__card">
+                <div class="card__image">
+                    <img src="/public/img/net-1.jpg" alt="ArticleImage">
+                </div>
+                <div class="card__content">
+                    <h5 class="card__content--heading">Article heading</h5>
+                    <p class="card__content--p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi adipisci explicabo officiis aliquid architecto repellat, dolorum, reprehenderit aliquam magnam quam perspiciatis facilis similique saepe! Cupiditate aspernatur earum asperiores natus voluptates!</p>
+                </div>
+            </div>
+            <div class="trending__card">
+                <div class="card__image">
+                    <img src="/public/img/net-1.jpg" alt="ArticleImage">
+                </div>
+                <div class="card__content">
+                    <h5 class="card__content--heading">Article heading</h5>
+                    <p class="card__content--p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi adipisci explicabo officiis aliquid architecto repellat, dolorum, reprehenderit aliquam magnam quam perspiciatis facilis similique saepe! Cupiditate aspernatur earum asperiores natus voluptates!</p>
+                </div>
+            </div>
+        </section>
+        <section class="articles">
+            <div class="row">
+                <div class="col-3">
+                    <div class="advert">
+                        <iframe src="https://google.com" frameborder="0">
+                            Advert Here..
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-6 articles_all">
+                    <% articles.forEach((article) => { %>
+                        <h5 class="heading__tetiary"><%= article.title %></h5>
+                        <p><%= article.summary %></p>
+                        <a href="/article/<%= article._id %>" class="btn btn-blue">Read more &rarr;</a>
+                        <hr>
+                    <% }) %>
+                </div>
+                <div class="col-3">
+                    <div class="Top__article">
+                        <h4>Top Articles</h4>
+                        <ul class="list-group">
+                            <% articles.forEach((article) => { %>
+                                <li class="list-group-item">
+                                    <a href="/article/<%= article._id %>">
+                                        <%= article.title %>
+                                    </a>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                    <div class="Top__article">
+                        <h4>Motivational Articles</h4>
+                        <ul class="list-group">
+                            <% articles.forEach((article) => { %>
+                                <li class="list-group-item">
+                                    <a href="/article/<%= article._id %>">
+                                        <%= article.title %>
+                                    </a>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                    <div class="Top__article">
+                        <h4>Motivational Articles</h4>
+                        <ul class="list-group">
+                            <% articles.forEach((article) => { %>
+                                <li class="list-group-item">
+                                    <a href="/article/<%= article._id %>">
+                                        <%= article.title %>
+                                    </a>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+
+    <% include ./footer %>

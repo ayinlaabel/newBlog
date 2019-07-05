@@ -1,23 +1,50 @@
 const express = require('express');
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose');
 const routes = express.Router();
+const multer = require('multer');
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null,'./uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png'|| file.mimetype === 'image/PNG') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
+});
+
 
 //Bring in Model
 const Article = require('../model/articles');
+const User = require('../model/user');
+
 
 //Get Article
-routes.get('/article', (req, res) =>{
+routes.get('/article', ensureAuthenticated, (req, res) =>{
     res.render('add_article');
 });
 
 //Add Article
-routes.post('/article',  (req, res) => {
+routes.post('/article', upload.single('image'), (req, res, next) => {
     const article = new Article();
 
     article.title = req.body.title;
+    article.author = req.user._id;
     article.summary = req.body.summary;
     article.article = req.body.article;
+    article.image = req.file.path;
 
     article.save( (err) =>{
         if (err) {
@@ -29,14 +56,7 @@ routes.post('/article',  (req, res) => {
     });
 });
 
-//View Article
-routes.get('/:id',  (req, res) => {
-    Article.findById(req.params.id, (err, article) => {
-        res.render('article', {
-            article: article
-        });
-    });
-});
+
 
 //Get Edit Article
 routes.get('/edit/:id', (req, res) => {
@@ -53,10 +73,11 @@ routes.get('/edit/:id', (req, res) => {
 });
 
 //Post Article
-routes.post('/edit/:id',  (req, res) => {
+routes.post('/edit/:id', ensureAuthenticated,  (req, res) => {
     const article = {};
 
     article.title = req.body.title;
+    article.author = req.user._id;
     article.summary = req.body.summary;
     article.article = req.body.article;
 
@@ -75,7 +96,7 @@ routes.post('/edit/:id',  (req, res) => {
 
 
 //Delete Article
-routes.delete('/article/:id', (req, res) =>{
+routes.delete('/:id', (req, res) =>{
     let query = {_id:req.params.id};
 
     Article.remove(query, (err) =>{
@@ -85,6 +106,29 @@ routes.delete('/article/:id', (req, res) =>{
             // res.redirect('/');
             res.send('success');
         }
-    })
-})
+    });
+});
+
+//View Article
+routes.get('/:id',  (req, res) => {
+    Article.findById(req.params.id, (err, article) => {
+        User.findById(article.author, (err, user) => {
+            res.render('article', {
+                article: article,
+                author: user.username
+            });
+        });
+    });
+});
+
+//Access Control
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        req.flash('danger', 'User Not Login, Please Login');
+        res.redirect('/user/login');
+    }
+}
+
 module.exports = routes;

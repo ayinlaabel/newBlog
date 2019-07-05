@@ -1,0 +1,15 @@
+<% include ./header %>
+<div class="article">
+    <div class="article__view">
+        <h3 class="heading--secondary"><%= article.title %></h3>
+        <h6 class="h6">Posted by <span><%= author%></span> <span class="float-right"><%= article.date %></span> </h6>
+        <img src="/<%= article.image %>" alt="article Image" srcset="" class="article__image">
+        <p class="article__paragraph"><%= article.article %></p>
+        <hr>
+        <% if (user) { %>
+            <a href="/article/edit/<%= article._id %>" class="btn btn-blue">Edit</a>
+            <a href="#" class="deleteArticle btn btn-red float-right" data-id="<%= article._id %>">Delete</a>
+        <% } %>
+    </div>
+</div>
+<% include ./footer %>

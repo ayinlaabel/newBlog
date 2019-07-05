@@ -1,11 +1,11 @@
 $(document).ready( () => {
-    $('.delete-article').on('click', function (e) {
+    $('.deleteArticle').on('click', (e) => {
         $target = $(e.target);
         var id = $target.attr('data-id');
         $.ajax({
             type: 'DELETE',
             url: '/article/'+id,
-            success:  (response) => {
+            success: (response) => {
                 alert('Deleting Article');
                 window.location.href= '/';
             },
@@ -15,22 +15,3 @@ $(document).ready( () => {
         });
     });
 });
-
-
-// $(document).ready(function () {
-//     $('.deleteSportArticle').on('click', function (err) {
-//         $target = $(e.target);
-//         var id = $target.attr('data-id');
-//         $.ajax({
-//             type: 'DELETE',
-//             url: '/article/'+id,
-//             success: function (response) {
-//                 alert('Deleting Sport Article');
-//                 window.location.href='/article/sportNews'
-//             },
-//             error: function (err) {
-//                 console.log(err);
-//             }
-//         });
-//     });
-// });

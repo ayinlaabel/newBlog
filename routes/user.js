@@ -6,6 +6,7 @@ const passport = require('passport');
 
 //Bring in model
 const User = require('../model/user');
+const Article = require('../model/articles');
 
 routes.get('/register', (req, res) =>{
     res.render('register');
@@ -60,6 +61,21 @@ routes.post('/register', (req, res) => {
 
 });
 
+routes.get('/', (req, res) => {
+    Article.find({}, (err, articles) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.render('index',{
+                articles:articles
+            });
+        }
+    });
+    
+});
+
+routes.get('/user?_login', (req, res) => res.render('index'))
+
 
 //Login User
 routes.get('/login', (req, res) => {
@@ -68,7 +84,7 @@ routes.get('/login', (req, res) => {
 
 routes.post('/login', (req, res, next) =>{
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/user?_login',
         failureRedirect: '/user/login',
         failureFlash: true
     })(req, res, next);
@@ -78,7 +94,7 @@ routes.get('/logout', (req, res) => {
     req.logout();
     req.flash('success', 'You have logout successfully');
     res.redirect('/user/login');
-})
+});
 
 
 

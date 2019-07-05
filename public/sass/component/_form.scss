@@ -1,0 +1,115 @@
+.form{
+    margin: 3rem 2rem;
+    width: 50%;
+
+    &__group{
+        position: relative;
+
+        &:not(:last-child){
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__textarea{
+        display: block;
+        padding: 1rem 1rem;
+        width: 80%;
+
+    }
+    
+    &__label{
+        transform: translateY(-4.5rem);
+        transition: all .3s;
+
+        &--textarea{
+            display: block;
+            padding: 1rem 1rem;
+            transform: translateY(-20rem);
+            transition: all .3s;
+        }
+    }
+
+    &__input:placeholder-shown + &__label{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-2rem);
+    }
+
+    &__textarea:placeholder-shown + &__label--textarea{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-17rem);
+    }
+
+
+    &__radio--group{
+        display: inline-block;
+        width: 49%;
+    }
+
+    &__radio-label{
+        position: relative;
+        padding-left: 2rem;
+    }
+
+    &__radio-input{
+        display: none;
+    }
+
+
+    &__radio-button{
+        width: 1.1rem;
+        height: 1.1rem;
+        border: 2px solid #008000;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: .2rem  ;
+        left: 0;
+
+        &::after{
+            content: "";
+            width: .6rem;
+            height: .6rem;
+            border-radius: 50%;
+            background-color: #008000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+    
+    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+        opacity: 1;
+    }
+    
+}
+
+.form-control:focus{
+    outline: none;
+
+}
+
+
+.form{
+    
+    &__input{
+        width: 80%;
+        display: block;
+        padding: .5rem 1rem;
+        border-radius: 2px;
+        border: 1px solid #bbbbbb;
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    &__label{
+        display: block;
+        padding: 0 1rem;
+    }
+}

@@ -1,0 +1,38 @@
+<% include ./header %>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6">
+        <div class="add">
+            <div class="add__article my-4">
+                <form action="/article/article" method="post" class="articleForm" enctype="multipart/form-data">
+                    <%- messages('message', locals) %>
+                    <div class="form__group">
+                        <input type="text" name="title" class="form__input" id="title" placeholder="Article Title">
+                        <label for="title" class="form__label">Article Title</label>
+                    </div>
+                    <div class="form__group">
+                        <textarea name="summary" id="summary" cols="30" rows="10" class="form__textarea" placeholder="Summary"></textarea>
+                        <label for="summary" class="form__label--textarea">Summary</label>
+                    </div>
+                    <div class="form__group">
+                        <textarea name="article" id="article" cols="30" rows="10" class="form__textarea" placeholder="Article"></textarea>
+                        <label for="article" class="form__label--textarea">Article</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="file" name="image" id="file" class="custom-file-input" >
+                        <label for="article" class="custom-file-label">Choose File</label>
+                    </div>
+                    
+                    <button class="btn btn-primary primary-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+</div>
+
+<% include ./footer %>
