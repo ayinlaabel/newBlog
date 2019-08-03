@@ -22,8 +22,8 @@ p {
     transform: translate(-50%, -50%);
     background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 55%, transparent 55%), url(/public/img/net-3.jpg);
     background-size: cover;
-    height: 70vh;
-    width: 70%; }
+    height: 95vh;
+    width: 80%; }
 
 .login {
   height: 100vh;
