@@ -9,7 +9,7 @@ module.exports = (passport) => {
 
         //Match Username
 
-        let query = {email:username};
+        let query = {username:username};
         User.findOne(query, (err, user) => {
             if(err) throw err;
             if (!user) {

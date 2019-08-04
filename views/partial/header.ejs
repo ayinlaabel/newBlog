@@ -27,20 +27,26 @@
   <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Stories<span>.</span></a>
+	      <a class="navbar-brand" href="/">Stories<span>.</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="/foods" class="nav-link">Books</a></li>
 	          <li class="nav-item"><a href="/lifestyle" class="nav-link">Lifestyle</a></li>
-	          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-	          <li class="nav-item"><a href="/user/login" class="nav-link">Login</a></li>
-	          <li class="nav-item"><a href="/user/register" class="nav-link">Signup</a></li>
+            <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+            <% if (!user){ %>
+              <li class="nav-item"><a href="/user/login" class="nav-link">Login</a></li>
+              <li class="nav-item"><a href="/user/register" class="nav-link">Signup</a></li>
+            <% } else { %>
+                  <li class="nav-item"><a href="/user/add/dashboard" class="nav-link">Add</a></li>
+                  <li class="nav-item"><a href="/user/logout" class="nav-link">Logout</a></li>
+            <% } %>
+
 	        </ul>
 	      </div>
 	    </div>

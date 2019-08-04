@@ -12,7 +12,7 @@ routes.get('/register', (req, res) =>{
     res.render('register');
 });
 
-routes.post('/register', (req, res) => {
+routes.post('/register', async (req, res) => {
     const name = req.body.name;
     const username = req.body.username;
     const email = req.body.email;
@@ -28,6 +28,7 @@ routes.post('/register', (req, res) => {
     let errors = req.validationErrors();
         // const err = err;
     if (errors) {
+        console.log(errors);
         res.render('register', {
             errors:errors
         })
@@ -39,7 +40,17 @@ routes.post('/register', (req, res) => {
             gender:gender,
             password: password
         });
+       let userEmail = await User.find({email: req.body.email});
+       let newUsername = await User.find({username: req.body.username});
 
+      if (userEmail) {
+        req.flash('danger', 'User with this Email Already Exiting!');
+        res.redirect('/user/register');
+      } else if(newUsername){
+        req.flash('danger', `User with this Username  Already Exiting!`);
+        res.redirect('/user/register');
+      } 
+      else {
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
                 if (err) {
@@ -57,6 +68,9 @@ routes.post('/register', (req, res) => {
                 })
             })
         })
+      }
+
+        
     }
 
 });
@@ -84,7 +98,7 @@ routes.get('/login', (req, res) => {
 
 routes.post('/login', (req, res, next) =>{
     passport.authenticate('local', {
-        successRedirect: '/user?_login',
+        successRedirect: '/',
         failureRedirect: '/user/login',
         failureFlash: true
     })(req, res, next);
