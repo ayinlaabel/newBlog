@@ -4,20 +4,24 @@ var router = express.Router();
 
 
 //Bring in models
-const Article = require('../model/articles');
+const Book = require('../model/books');
+const Motivation = require('../model/motivation');
 const User = require('../model/user');
 
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  Article.find({}, (err, articles) => {
+  Book.find({}, (err, articles) => {
+    Motivation.find({}, (err, motivations) => {
       if (err) {
-          console.log(err)
-      } else {
-          res.render('index',{
-              articles:articles
-          });
-      }
+        console.log(err)
+    } else {
+        res.render('index',{
+            articles:articles,
+            motivations: motivations
+        });
+    }
+    });
   });
   
 });

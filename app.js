@@ -113,10 +113,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Additional Routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const article = require('./routes/article');
-const user = require('./routes/user');
-app.use('/article', article);
-app.use('/user', user);
+const articleRouter = require('./routes/article');
+app.use('/article', articleRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
