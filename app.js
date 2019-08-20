@@ -1,7 +1,10 @@
+const createError = require('http-errors');
 const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const path = require('path');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
@@ -12,7 +15,6 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
-
 
 //Connect to mongodb
 mongoose.connect(config.database);
@@ -31,12 +33,12 @@ db.on('error', (err) =>{
 });
 
 
-//Initialize App
 const app = express();
 
-//Bring in models
-const Article = require('./model/articles');
-const User = require('./model/user');
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
 
 // Middlewares
 //Delete Request For Method-Override
@@ -71,7 +73,7 @@ app.use(function (req, res, next) {
 //Express Validator Middleware
 app.use(expressValidator({
     errorFormatter: (param, msg, value) =>{
-        var namespace = param.split('.'),
+        let namespace = param.split('.'),
             root = namespace.shift(),
             formParam = root;
         
@@ -101,69 +103,37 @@ app.get('*', function(req, res, next){
     next();
 });
 
-//Init gfs
-let gfs;
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-db.once('open', () =>{
-    gfs = Grid(db.db, mongoose.mongo);
-    gfs.collection('articles');
-});
-
-//Create Storage Engine
-
-const storage = new GridFsStorage({
-    url: config.database,
-    file: (req, file) => {
-      return new Promise((resolve, reject) => {
-        crypto.randomBytes(16, (err, buf) => {
-          if (err) {
-            return reject(err);
-          }
-          const filename = buf.toString('hex') + path.extname(file.originalname);
-          const fileInfo = {
-            filename: filename,
-            bucketName: 'articles'
-          };
-          resolve(fileInfo);
-        });
-      });
-    }
-  });
-  const upload = multer({ storage });
-
-//Routes fr the Web
-app.get('/', (req, res) => {
-    Article.find({}, (err, articles) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.render('index',{
-                articles:articles
-            });
-        }
-    });
-    
-});
-
-app.get('/foods', (req, res) =>{
-  Article.find({}, (err, articles)=>{
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('foods', {
-        articles:articles
-      });
-    }
-  });
-});
 
 //Additional Routes
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 const article = require('./routes/article');
 const user = require('./routes/user');
 app.use('/article', article);
 app.use('/user', user);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
-//Creating Server
-app.listen(3000, () => {
-    console.log('Server Started on port 3000 ...');
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;

@@ -1,15 +1,12 @@
 {
   "name": "newblog",
-  "version": "1.0.0",
-  "description": "Nnamdi Blog",
-  "main": "app.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node app",
-    "compile:sass": "node-sass public/sass/main.scss public/bootstrap/css/style.css -w"
+    "start": "node ./bin/www"
   },
-  "author": "Krane Abel",
-  "license": "ISC",
   "dependencies": {
+    "cookie-parser": "~1.4.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
@@ -25,6 +22,9 @@
     "multer-gridfs-storage": "^3.2.3",
     "node-sass": "^4.11.0",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
   }
 }
