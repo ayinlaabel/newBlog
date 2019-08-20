@@ -36,12 +36,27 @@
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="/foods" class="nav-link">Books</a></li>
-	          <li class="nav-item"><a href="/lifestyle" class="nav-link">Lifestyle</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                What's New
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Books</a>
+                <a class="dropdown-item" href="#">Career Teaching</a>
+                <a class="dropdown-item" href="#">Discover Your Value</a>
+                <a class="dropdown-item" href="#">Entertainment</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">History</a>
+                <a class="dropdown-item" href="#">Inspirational Quote</a>
+                <a class="dropdown-item" href="#">News Trend</a>
+                <a class="dropdown-item" href="#">Motivational Quote</a>
+              </div>
+            </li>
+	          <li class="nav-item"><a href="/lifestyle" class="nav-link">Advert with us</a></li>
             <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
             <% if (!user){ %>
-              <li class="nav-item"><a href="/user/login" class="nav-link">Login</a></li>
-              <li class="nav-item"><a href="/user/register" class="nav-link">Signup</a></li>
+              <!-- <li class="nav-item"><a href="/user/login" class="nav-link">Login</a></li>
+              <li class="nav-item"><a href="/user/register" class="nav-link">Signup</a></li> -->
             <% } else { %>
                   <li class="nav-item"><a href="/user/add/dashboard" class="nav-link">Add</a></li>
                   <li class="nav-item"><a href="/user/logout" class="nav-link">Logout</a></li>
