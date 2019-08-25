@@ -27,8 +27,8 @@ const upload = multer({
 
 
 //Bring in Model
-const Article = require('../model/articles');
-const User = require('../model/user');
+const Article = require('../models/articles');
+const User = require('../models/user');
 
 
 //Get Article

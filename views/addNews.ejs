@@ -1,0 +1,34 @@
+<%- include ./partial/dashboardHeader -%>
+
+    <section class="container row">
+        <div class="col-8 offset-2">
+                <br>
+                <form action="/users/add/newsTrend" method="POST" enctype="multipart/form-data">                    
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Title</label>
+                        <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+                        <small id="emailHelp" class="form-text text-muted">Please add a title for this Article for easy search.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="validationTextarea">Article Summary</label>
+                        <textarea class="form-control" name="summary" id="validationTextarea" placeholder="Summary about the book"></textarea>
+                        <small id="emailHelp" class="form-text text-muted">Please briefly discuss about this book or the writer.</small>
+                    </div>
+                    <div class="mb-3">
+                            <label for="validationTextarea">Add Paragraph One</label>
+                            <textarea class="form-control" name="pg1" id="validationTextarea" placeholder="Summary about the book"></textarea>
+                            <small id="emailHelp" class="form-text text-muted">Please discuss fully about this Article.</small>
+                        </div>
+                    <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="imageFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <small id="emailHelp" class="form-text text-muted">Please make sure you upload image that point to this Article.</small>
+    
+                        </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            
+        </div>
+    </section>
+
+<%- include ./partial/docFooter -%>

@@ -114,6 +114,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const articleRouter = require('./routes/article');
+const bookRouter = require('./routes/books');
+app.use('/books', bookRouter);
 app.use('/article', articleRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

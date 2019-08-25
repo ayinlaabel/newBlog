@@ -4,8 +4,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
           <div class="col-md-9 ftco-animate pb-5 text-center">
-            <h1 class="mb-3 bread">Foods</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Foods <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-3 bread">BOOKS</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Books <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
       </div>
@@ -17,98 +17,18 @@
         <div class="row">
         	<div class="col-lg-9">
         		<div class="row">
-					<% articles.forEach((article) => { %>
+					<% books.forEach((book) => { %>
         			<div class="col-md-4 ftco-animate">
     						<div class="blog-entry">
 		    					<a href="single.html" class="img-2"><img src="/public/images/blog-1.jpg" class="img-fluid" alt="Colorlib Template"></a>
 			    				<div class="text pt-3">
 	    							<p class="meta d-flex"><span class="pr-3">Deert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html"><%= article.title %></a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
+	    							<h3><a href="single.html"><%= book.title %></a></h3>
+	    							<p class="mb-0"><a href="/books/review/<%= book._id %>" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
 	    						</div>
 		    				</div>
 						</div>
 						<% }) %>
-    					<div class="col-md-4 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img-2"><img src="/public/images/blog-2.jpg" class="img-fluid" alt="Colorlib Template"></a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-4 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img-2"><img src="/public/images/blog-3.jpg" class="img-fluid" alt="Colorlib Template"></a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-4 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img-2"><img src="/public/images/blog-4.jpg" class="img-fluid" alt="Colorlib Template"></a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-4 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img-2"><img src="/public/images/blog-5.jpg" class="img-fluid" alt="Colorlib Template"></a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-4 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img-2"><img src="/public/images/blog-6.jpg" class="img-fluid" alt="Colorlib Template"></a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-4 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img-2"><img src="/public/images/blog-7.jpg" class="img-fluid" alt="Colorlib Template"></a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-4 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img-2"><img src="/public/images/blog-8.jpg" class="img-fluid" alt="Colorlib Template"></a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-4 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img-2"><img src="/public/images/blog-9.jpg" class="img-fluid" alt="Colorlib Template"></a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn btn-black py-2">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
         		</div>
         		<div class="row mt-5">
 		          <div class="col text-center">
@@ -150,14 +70,14 @@
 			          	<li>
 			          		<a href="#" class="img d-flex align-items-center justify-content-center text-center" style="background-image: url(/public/images/category-1.jpg);">
 			          			<div class="text">
-			          				<h3>Foods</h3>
+			          				<h3>Career Teaching</h3>
 			          			</div>
 			          		</a>
 			          	</li>
 			          	<li>
 			          		<a href="#" class="img d-flex align-items-center justify-content-center text-center" style="background-image: url(/public/images/category-2.jpg);">
 			          			<div class="text">
-			          				<h3>Lifestyle</h3>
+			          				<h3>Motivational Quote</h3>
 			          			</div>
 			          		</a>
 			          	</li>
@@ -199,7 +119,7 @@
         </div>
       </div>
     </section>
-<%- include ./partial/header %>
+<%- include ./partial/footer %>
 
   <script src="/public/js/jquery.min.js"></script>
   <script src="/public/js/jquery-migrate-3.0.1.min.js"></script>

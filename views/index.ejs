@@ -3,27 +3,29 @@
 	<%- messages('message', locals) %>
 
     <section class="home-slider owl-carousel">
+		<% posts.forEach((post) => { %>
+			<div class="slider-item">
+				<div class="container">
+				<div class="row d-flex slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+								
+								<div class="img" style="background-image: url('/<%= post.file %>');"></div>
+
+					<div class="text d-flex align-items-center ftco-animate">
+						<div class="text-2 pb-lg-5 mb-lg-4 px-4 px-md-5">
+							<h3 class="subheading mb-3">Featured Posts</h3>
+							<h1 class="mb-5"><%= post.title %></h1>
+							<p class="mb-md-5"><%= post.summary %></p>
+							<p><a href="#" class="btn btn-black px-3 px-md-4 py-3">Read More <span class="icon-arrow_forward ml-lg-4"></span></a></p>
+					</div>
+					</div>
+
+				</div>
+				</div>
+			</div>
+		<% }) %>
+
       <div class="slider-item">
-        <div class="container">
-          <div class="row d-flex slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-						
-						<div class="img" style="background-image: url(/public/images/bg_1.jpg);"></div>
-
-            <div class="text d-flex align-items-center ftco-animate">
-            	<div class="text-2 pb-lg-5 mb-lg-4 px-4 px-md-5">
-		          	<h3 class="subheading mb-3">Featured Posts</h3>
-		            <h1 class="mb-5">Love the Delicious &amp; Tasty Foods</h1>
-		            <p class="mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia</p>
-		            <p><a href="#" class="btn btn-black px-3 px-md-4 py-3">Read More <span class="icon-arrow_forward ml-lg-4"></span></a></p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="slider-item">
-        <div class="container">
+        <div class="container">		
           <div class="row d-flex slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
           	<div class="img" style="background-image: url(/public/images/bg_2.jpg);"></div>
@@ -65,54 +67,20 @@
     			</div>
     			<div class="col-md-6">
     				<div class="row">
-    					<div class="col-md-6 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url(/public/images/image_1.jpg);">
-		    						<div class="overlay"></div>
-			    				</a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn-custom">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-6 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url(/public/images/image_3.jpg);">
-		    						<div class="overlay"></div>
-			    				</a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods from Scotland</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn-custom">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-6 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url(/public/images/image_4.jpg);">
-		    						<div class="overlay"></div>
-			    				</a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn-custom">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
-    					<div class="col-md-6 ftco-animate">
-    						<div class="blog-entry">
-		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url(/public/images/image_5.jpg);">
-		    						<div class="overlay"></div>
-			    				</a>
-			    				<div class="text pt-3">
-	    							<p class="meta d-flex"><span class="pr-3">Dessert</span><span class="ml-auto pl-3">March 01, 2018</span></p>
-	    							<h3><a href="single.html">Tasty &amp; Delicious Foods</a></h3>
-	    							<p class="mb-0"><a href="single.html" class="btn-custom">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
-	    						</div>
-		    				</div>
-    					</div>
+						<% books.forEach((book) => { %>
+							<div class="col-md-6 ftco-animate">
+								<div class="blog-entry">
+									<a href="single.html" class="img d-flex align-items-end" style="background-image: url('<%= book.file %>');">
+										<div class="overlay"></div>
+									</a>
+									<div class="text pt-3">
+										<p class="meta d-flex"><span class="pr-3">Books</span><span class="ml-auto pl-3">March 01, 2018</span></p>
+										<h3><a href="single.html"><%= book.title %></a></h3>
+										<p class="mb-0"><a href='/users/books/<%= book._id %>' class="btn-custom">Read More <span class="icon-arrow_forward ml-4"></span></a></p>
+									</div>
+								</div>
+							</div>
+						<% }) %>
     				</div>
     			</div>
     		</div>
@@ -189,7 +157,7 @@
 	<section class="ftco-section ftco-no-pt ftco-section-about ftco-no-pb bg-darken">
     	<div class="container-fluid">
     		<div class="row">
-					<div class="col-sm-6 col-md-6 col-lg-9 order-md-last img py-5" style="background-image: url(images/bg_3.jpg);"></div>
+					<div class="col-sm-6 col-md-6 col-lg-9 order-md-last img py-5" style="background-image: url(images/68793466_681976378968961_2086825807698722816_n.jpg);"></div>
 
 	        <div class="col-sm-6 col-md-6 col-lg-3 py-4 text d-flex align-items-center ftco-animate">
 	        	<div class="text-2 py-5 px-4">

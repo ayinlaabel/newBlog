@@ -17,10 +17,13 @@ const bookSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    // iage:{
-    //     type: String,
-    //     required: true
-    // }m
+    image:{
+        type: String,
+        required: true
+    },
+    date :{
+        type: Date
+    }
 });
 
 
